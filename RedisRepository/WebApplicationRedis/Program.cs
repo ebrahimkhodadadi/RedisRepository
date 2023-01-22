@@ -1,4 +1,6 @@
-namespace WebApplication
+using RedisOM;
+
+namespace WebApplicationRedis
 {
     public class Program
     {
@@ -12,6 +14,8 @@ namespace WebApplication
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddRedis(builder.Configuration);
 
             var app = builder.Build();
 

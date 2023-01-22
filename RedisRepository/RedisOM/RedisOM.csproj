@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Redis.OM"/>
-    <Using Include="Redis.OM.Contracts"/>
-    <Using Include="RedisOM.Entity"/>
+    <Using Include="Redis.OM" />
+    <Using Include="Redis.OM.Contracts" />
+    <Using Include="RedisOM.Entity" />
   </ItemGroup>
 
 </Project>
