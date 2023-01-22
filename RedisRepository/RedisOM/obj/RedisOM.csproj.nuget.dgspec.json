@@ -44,6 +44,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Redis.OM": {
+              "target": "Package",
+              "version": "[0.4.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
