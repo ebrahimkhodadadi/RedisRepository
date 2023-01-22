@@ -1,7 +1,8 @@
-﻿using CrudApp.Entity;
-using CrudApp.Models;
+﻿
+using RedisOM.Entity;
+using RedisOM.Models;
 
-namespace CrudApp.Repository;
+namespace RedisOM.Repository;
 
 public interface IRepository<T> where T : class, IEntity<T>, new()
 {
