@@ -1,4 +1,5 @@
-﻿using CrudApp.Enums;
+﻿
+using RedisOM.Enums;
 
 namespace RedisOM.Models;
 
