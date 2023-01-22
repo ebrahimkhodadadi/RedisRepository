@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Redis.OM": {
               "target": "Package",
               "version": "[0.4.1, )"
