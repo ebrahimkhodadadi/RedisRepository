@@ -6,7 +6,7 @@ namespace RedisOM.Repository;
 
 public interface IRepository<T> where T : class, IEntity<T>, new()
 {
-    Task<Result<T>> Save(T entity);
+    Task<Result<T>> Save(T entity, TimeSpan? expire = null);
     Task<Result<T?>> FindById(string id);
     Result<IList<T>> Get(Func<T, bool> predicate);
     Task<Result<IList<T>>> Get();

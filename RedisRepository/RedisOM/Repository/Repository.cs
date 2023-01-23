@@ -1,8 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
-using Redis.OM;
 using Redis.OM.Searching;
-using RedisOM.Entity;
 using RedisOM.Enums;
 using RedisOM.Models;
 using StackExchange.Redis;
@@ -30,7 +28,7 @@ public class Repository<T> : IRepository<T> where T : class, IEntity<T>, new()
     private string EntityName => typeof(T).Name;
     private RedisKey EntityCounterKey => $"{EntityName}:Counter";
 
-    public async Task<Result<T>> Save(T entity)
+    public async Task<Result<T>> Save(T entity, TimeSpan? expire = null)
     {
         if (!string.IsNullOrEmpty(entity.Id))
         {
@@ -46,8 +44,16 @@ public class Repository<T> : IRepository<T> where T : class, IEntity<T>, new()
             versionAbleEntity.Version += 1;
         }
 
-        string id = await _redisCollection.InsertAsync(entity);
-        await IncrementEntityCount();
+        string id;
+
+        if (expire.HasValue)
+            id = await _redisCollection.InsertAsync(entity, expire.Value);
+        else
+        {
+            id = await _redisCollection.InsertAsync(entity);
+            await IncrementEntityCount();
+        }
+        
         entity.Id = id;
         return new Result<T>()
             .SetReturnType(ReturnType.Success)
