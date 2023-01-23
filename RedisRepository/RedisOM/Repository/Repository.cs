@@ -46,7 +46,7 @@ public class Repository<T> : IRepository<T> where T : class, IEntity<T>, new()
             versionAbleEntity.Version += 1;
         }
 
-        string id = await _redisCollection.InsertAsync(entity);
+        string id = await _redisCollection.InsertAsync(entity, TimeSpan.FromSeconds(10));
         await IncrementEntityCount();
         entity.Id = id;
         return new Result<T>()

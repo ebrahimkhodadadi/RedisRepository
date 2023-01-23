@@ -9,6 +9,7 @@ namespace WebApplicationRedis
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,14 +26,19 @@ namespace WebApplicationRedis
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            
+            app.UseRouting();
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
 
-            app.MapControllers();
-
+            app.UseEndpoints(config =>
+            {
+                config.MapControllers();
+            });
+            
             app.Run();
         }
     }

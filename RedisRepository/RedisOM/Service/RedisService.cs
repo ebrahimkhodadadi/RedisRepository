@@ -2,35 +2,32 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using RedisOM.Models;
+using StackExchange.Redis;
 
 namespace RedisOM.Service;
 
 public static class RedisService
 {
-    public static string GetConfigString(IConfiguration configuration)
+    public static ConfigurationOptions GetConfigString(IConfiguration configuration)
     {
-        return $"{configuration["RedisSettings:Host"]}:{configuration["RedisSettings: Port"]}";
-        //var redisSettings = new RedisSettings();
+        var model = new ConfigurationOptions()
+        {
+            EndPoints = { string.Concat(configuration["RedisSettings:Host"], ":", configuration["RedisSettings:Port"]) },
+            AbortOnConnectFail = Convert.ToBoolean(configuration["RedisSettings:AbortOnConnectFail"]),
+            AsyncTimeout = Convert.ToInt32(configuration["RedisSettings:AsyncTimeOutMilliSecond"]),
+            ConnectTimeout = Convert.ToInt32(configuration["RedisSettings:ConnectTimeOutMilliSecond"])
+        };
 
-        //if (redisSettings != null)
-        //{
-        //    redisConnectionUrl = $"{redisSettings.Url}:{redisSettings.Port},password={redisSettings.Password}";
-        //}
-        //else
-        //{
-        //    var redisEndpointUrl = (Environment.GetEnvironmentVariable("REDIS_ENDPOINT_URL") ?? "127.0.0.1:6379").Split(':');
-        //    var redisHost = redisEndpointUrl[0];
-        //    var redisPort = redisEndpointUrl[1];
+        if (!string.IsNullOrEmpty(configuration["RedisSettings:User"]))
+        {
+            model.User = configuration["RedisSettings:User"];
+        }
+        if (!string.IsNullOrEmpty(configuration["RedisSettings:Password"]))
+        {
+            model.Password = configuration["RedisSettings:Password"];
+        }
 
-        //    var redisPassword = Environment.GetEnvironmentVariable("REDIS_PASSWORD");
-        //    if (redisPassword != null)
-        //    {
-        //        redisConnectionUrl = $"{redisHost},password={redisPassword}";
-        //    }
-        //    else
-        //    {
-        //        redisConnectionUrl = $"{redisHost}:{redisPort}";
-        //    }
-        //}
+        return model;
+        
     }
 }
