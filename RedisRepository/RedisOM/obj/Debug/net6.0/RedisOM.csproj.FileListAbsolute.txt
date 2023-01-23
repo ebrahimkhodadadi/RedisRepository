@@ -1,0 +1,12 @@
+H:\RedisRepository\RedisRepository\RedisOM\bin\Debug\net6.0\RedisOM.deps.json
+H:\RedisRepository\RedisRepository\RedisOM\bin\Debug\net6.0\RedisOM.dll
+H:\RedisRepository\RedisRepository\RedisOM\bin\Debug\net6.0\RedisOM.pdb
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\RedisOM.csproj.AssemblyReference.cache
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\RedisOM.GeneratedMSBuildEditorConfig.editorconfig
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\RedisOM.AssemblyInfoInputs.cache
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\RedisOM.AssemblyInfo.cs
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\RedisOM.csproj.CoreCompileInputs.cache
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\RedisOM.dll
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\refint\RedisOM.dll
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\RedisOM.pdb
+H:\RedisRepository\RedisRepository\RedisOM\obj\Debug\net6.0\ref\RedisOM.dll
